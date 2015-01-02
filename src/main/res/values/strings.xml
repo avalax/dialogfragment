@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DialogFragment example</string>
+    <string name="dialog_change_name">change alert message</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="label_show_basic_dialog">show BasicDialog</string>
+    <string name="label_show_alert_dialog">show AlertDialog</string>
+    <string name="label_alert_dialog_ok">AlertDialog: OK</string>
+</resources>
