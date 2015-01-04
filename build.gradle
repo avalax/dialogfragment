@@ -39,23 +39,24 @@ android {
         versionCode 1
         versionName "1.0"
     }
- 
+
     buildTypes {
         debug {
             debuggable true
             minifyEnabled false
-			zipAlignEnabled false
+            zipAlignEnabled false
         }
-            
-		release {
-			debuggable false
-			minifyEnabled false
-			zipAlignEnabled false
+
+        release {
+            debuggable false
+            minifyEnabled false
+            zipAlignEnabled false
         }
     }
 }
 
 dependencies {
+    compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.jakewharton:butterknife:6.0.0'
 }

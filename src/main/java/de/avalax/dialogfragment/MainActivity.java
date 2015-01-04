@@ -9,7 +9,7 @@ import butterknife.OnClick;
 
 
 public class MainActivity extends FragmentActivity implements BasicDialogFragment.DialogListener, AlertDialogFragment.DialogListener {
-    private String alertText = "";
+    private String alertText = "alertText";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
