@@ -51,13 +51,13 @@ public class BasicDialogFragment extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view)
-                .setMessage(R.string.dialog_change_name)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                .setTitle(R.string.dialog_change_name)
+                .setPositiveButton(R.string.done_label, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         listener.onDialogPositiveClick(BasicDialogFragment.this);
                     }
                 })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancel_label, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         BasicDialogFragment.this.getDialog().cancel();
                     }

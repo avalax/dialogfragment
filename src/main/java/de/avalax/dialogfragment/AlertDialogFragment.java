@@ -7,12 +7,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.EditText;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class AlertDialogFragment extends DialogFragment {
 
@@ -43,13 +37,13 @@ public class AlertDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         String message = getArguments().getString(ARGS_ALERT);
         builder
-                .setMessage(message)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                .setTitle(message)
+                .setPositiveButton(R.string.done_label, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         listener.onDialogPositiveClick(AlertDialogFragment.this);
                     }
                 })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancel_label, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         AlertDialogFragment.this.getDialog().cancel();
                     }

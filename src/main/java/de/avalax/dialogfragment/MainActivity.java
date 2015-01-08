@@ -35,6 +35,6 @@ public class MainActivity extends FragmentActivity implements BasicDialogFragmen
 
     @Override
     public void onDialogPositiveClick(AlertDialogFragment alertDialogFragment) {
-        Toast.makeText(this,R.string.label_alert_dialog_ok,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,R.string.alert_dialog_ok_label,Toast.LENGTH_SHORT).show();
     }
 }
