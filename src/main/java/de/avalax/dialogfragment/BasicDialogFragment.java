@@ -1,18 +1,17 @@
 package de.avalax.dialogfragment;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class BasicDialogFragment extends DialogFragment {
 
@@ -40,29 +39,20 @@ public class BasicDialogFragment extends DialogFragment {
         }
     }
 
-    @NonNull
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.fragment_basic_dialog, null);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_basic_dialog, container, false);
         ButterKnife.inject(this, view);
-
+        getDialog().setTitle(R.string.dialog_change_name);
         nameEditText.setText(getArguments().getString(ARGS_NAME));
+        return view;
+    }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(view)
-                .setTitle(R.string.dialog_change_name)
-                .setPositiveButton(R.string.done_label, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        listener.onDialogPositiveClick(BasicDialogFragment.this);
-                    }
-                })
-                .setNegativeButton(R.string.cancel_label, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        BasicDialogFragment.this.getDialog().cancel();
-                    }
-                });
-        return builder.create();
+    @OnClick(R.id.done_button)
+    protected void positiveButton() {
+        listener.onDialogPositiveClick(BasicDialogFragment.this);
+        getDialog().dismiss();
     }
 
     public String getAlertText() {
