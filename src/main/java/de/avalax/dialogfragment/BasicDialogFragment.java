@@ -20,7 +20,6 @@ public class BasicDialogFragment extends DialogFragment {
     @InjectView(R.id.nameEditText)
     protected EditText nameEditText;
     private DialogListener listener;
-    private String alertText;
 
     public static BasicDialogFragment newInstance(String name) {
         BasicDialogFragment fragment = new BasicDialogFragment();
@@ -48,16 +47,13 @@ public class BasicDialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_basic_dialog, null);
         ButterKnife.inject(this, view);
 
-        this.alertText = getArguments().getString(ARGS_NAME);
-
-        nameEditText.setText(alertText);
+        nameEditText.setText(getArguments().getString(ARGS_NAME));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view)
                 .setMessage(R.string.dialog_change_name)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        setAlertText();
                         listener.onDialogPositiveClick(BasicDialogFragment.this);
                     }
                 })
@@ -69,12 +65,8 @@ public class BasicDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    private void setAlertText() {
-        this.alertText = nameEditText.getText().toString();
-    }
-
     public String getAlertText() {
-        return alertText;
+        return nameEditText.getText().toString();
     }
 
     public interface DialogListener {
